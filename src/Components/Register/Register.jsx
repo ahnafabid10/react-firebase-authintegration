@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
 import { Link } from 'react-router';
 import { auth } from '../../Firebase/Firebase.init';
+// import { AuthContext } from '../../main';
 
 const Register = () => {
 
