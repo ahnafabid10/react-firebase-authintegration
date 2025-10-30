@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
 
+
 const Login = () => {
   const {signInUser} = use(AuthContext)
 
@@ -14,16 +15,13 @@ const Login = () => {
     signInUser(email,password)
     .then(result =>{
       console.log(result.user)
+      // event.target.reset()
     })
     .catch(error  =>{
-      console.log(error.user)
+      console.log(error)
     })
 
   }
-
-
-
-
 
     return (
         <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">

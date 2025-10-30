@@ -4,7 +4,16 @@ import '../NavBar/NavBar.css'
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
 
 const NavBar = () => {
-  const {user }= use(AuthContext);
+  const {user, signOutUser }= use(AuthContext);
+
+  const handleSignOut = () =>{
+    signOutUser()
+     .then(()=>{
+     })
+     .catch(error =>{
+      console.log(error)
+     })
+  }
 
     const authInfo = use(AuthContext)
     console.log('navbar', authInfo)
@@ -12,7 +21,15 @@ const NavBar = () => {
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/login'>Login</NavLink></li>
     <li><NavLink to='/register'>Register</NavLink></li>
+    {
+      user && <>
+      <li><NavLink to='/orders'>Orders</NavLink></li>
+      <li><NavLink to='/profile'>Profile</NavLink></li>
+      
+      </>
+    }
     </>
+    
     return (
         <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
@@ -34,7 +51,7 @@ const NavBar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    {user ? <a className="btn">Sign Up</a> : <Link to='/login'>Login</Link>}
+    {user ? <a onClick={handleSignOut} className="btn">Sign Out</a> : <Link to='/login'>Login</Link>}
   </div>
 </div>
     );
